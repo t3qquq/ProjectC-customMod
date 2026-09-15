@@ -1,0 +1,61 @@
+module ProjectC
+{
+    imports
+    {
+        Base
+    }
+
+    /* 차띄기 (차령 서버 전용 간식)
+       바닐라 BreadSlices -> Toast 와 같은 ReplaceOnCooked 패턴.
+       - 이름 앞의 "신선한 / 신선하지 않은 / 상한" 은 엔진이 DaysFresh / DaysTotallyRotten
+         기준으로 자동으로 붙인다 (IGUI_FoodNaming). DisplayName 에 넣으면 중복된다.
+       - HideCooked: "데우지 않은 / 데워진" 접두어를 숨긴다.
+       - 조리 1분(MinutesToCook) 초과 시 ChatteugiGrilled 로 교체된다.
+         교체된 아이템은 조리 시간이 0부터 다시 쌓이므로, 원본 1분 + 구운 쪽 2분 = 3분 초과 시 탄다.
+       - 교체 시 새 아이템이 생성되므로 신선도(Age)는 0으로 초기화된다 (바닐라 Toast 와 동일).
+         이미 상한 차띄기는 교체되지 않는다 (Food.update: !isRotten()). */
+
+    item Chatteugi
+    {
+        DisplayName         = Chatteugi,
+        DisplayCategory     = Food,
+        Type                = Food,
+        Weight              = 0.1,
+        Icon                = PC_Chatteugi,
+        Tooltip             = Tooltip_PC_Chatteugi,
+        HungerChange        = -10,
+        Calories            = 120,
+        Carbohydrates       = 27,
+        Lipids              = 0.8,
+        Proteins            = 2,
+        DaysFresh           = 14,
+        DaysTotallyRotten   = 28,
+        IsCookable          = TRUE,
+        ReplaceOnCooked     = ProjectC.ChatteugiGrilled,
+        MinutesToCook       = 1,
+        MinutesToBurn       = 3,
+        Tags                = HideCooked,
+    }
+
+    item ChatteugiGrilled
+    {
+        DisplayName         = Grilled Chatteugi,
+        DisplayCategory     = Food,
+        Type                = Food,
+        Weight              = 0.1,
+        Icon                = PC_ChatteugiGrilled,
+        Tooltip             = Tooltip_PC_ChatteugiGrilled,
+        HungerChange        = -18,
+        Calories            = 120,
+        Carbohydrates       = 27,
+        Lipids              = 0.8,
+        Proteins            = 2,
+        DaysFresh           = 14,
+        DaysTotallyRotten   = 28,
+        IsCookable          = TRUE,
+        MinutesToCook       = 0,
+        MinutesToBurn       = 2,
+        CustomEatSound      = EatingCrispy,
+        Tags                = AlreadyCooked;HideCooked,
+    }
+}

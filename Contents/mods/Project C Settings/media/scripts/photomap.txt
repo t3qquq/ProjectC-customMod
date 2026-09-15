@@ -1,0 +1,17 @@
+module PhotoMap
+{
+    imports
+    {
+        Base
+    }
+
+    item shelter1
+    {
+        DisplayCategory = Cartography,
+        Type            = Normal,
+        DisplayName     = Shelter Map,
+        Icon            = Map,
+        Weight          = 0.1,
+        WorldStaticModel = Map,
+    }
+}
