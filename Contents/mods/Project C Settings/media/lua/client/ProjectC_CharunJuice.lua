@@ -11,6 +11,7 @@
 --   * 금액/대기시간: PongDu.Tier_charun_juice / PongDu.Delay_charun_juice
 --     (media/sandbox-options.txt, 페이지 "퐁듀 - Project C")
 --   * 큐박스/런처/테스트메뉴 표시명: IGUI_donation_charun_juice
+--   * 큐박스 아이콘: media/textures/donation/charun_juice.png (퐁듀 PongDuAddon icon 지원 버전 필요)
 --
 -- Lifestyle 참고 (client/Hygiene/ToiletBladderNeed.lua, AdjustBladderNeed):
 --   * 실제 수치는 modData.bathroomNeed. 무들 표시값 LSMoodles.BladderNeed.Value 는
@@ -94,6 +95,7 @@ else
         immediate = true,               -- 본인 몸에만 적용 -> 안전지대에서도 즉시 발동
         color     = {0.80, 0.80, 0.10},
         category  = "personal",
+        icon      = "media/textures/donation/charun_juice.png",  -- 큐박스 아이콘 (구버전 퐁듀는 무시)
         fn        = applyCharunJuice,
     })
 end
