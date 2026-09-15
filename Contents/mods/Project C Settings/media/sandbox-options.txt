@@ -1,0 +1,29 @@
+VERSION = 1,
+
+/**************************************************
+        PONGDU - PROJECT C (Project C server-only donation features)
+
+  Options below use the PongDu namespace on purpose:
+  PongDu reads PongDu.Tier_<featureId> / PongDu.Delay_<featureId>
+  for every feature registered through PongDuAddon.
+**************************************************/
+
+option PongDu.Divider_CharunJuice = {
+    type = boolean, default = false,
+    page = PongDu_ProjectC, translation = PongDu_Divider_CharunJuice,
+}
+
+option PongDu.Tier_charun_juice = {
+    type = integer, min = 0, max = 1000000, default = 0,
+    page = PongDu_ProjectC, translation = PongDu_Tier_charun_juice,
+}
+
+option PongDu.Delay_charun_juice = {
+    type = integer, min = 0, max = 60, default = 3,
+    page = PongDu_ProjectC, translation = PongDu_Delay_charun_juice,
+}
+
+option PongDu.CharunJuice_Amount = {
+    type = integer, min = 1, max = 100, default = 20,
+    page = PongDu_ProjectC, translation = PongDu_CharunJuice_Amount,
+}
